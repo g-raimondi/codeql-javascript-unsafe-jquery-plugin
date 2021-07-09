@@ -1,4 +1,5 @@
 import javascript
-from DataFlow::SourceNode plugcall
-where plugcall = jquery().getAPropertyRead("fn").getAPropertySource()
-select plugcall
+from DataFlow::SourceNode call
+//Functions $.fn.<some-property> where data flows into.
+where call = jquery().getAPropertyRead("fn").getAPropertySource()
+select call
