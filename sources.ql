@@ -1,8 +1,9 @@
 import javascript
 predicate isSource(DataFlow::Node source) {
-    exists(DataFlow::Node call |
+    exists(DataFlow::FunctionNode call, DataFlow::ParameterNode param |
     call = jquery().getAPropertyRead("fn").getAPropertySource() and
-    source = call
+    param = call.getAParameter() and
+    source.asExpr() = param.asExpr()
     )
 }
 
